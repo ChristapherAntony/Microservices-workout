@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-2-depl
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-2
+  template:
+    metadata:
+      labels:
+        app: server-2
+    spec:
+      containers:
+        - name: server-2
+          image: christapherantony/server-2
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://server-2-mongo-srv:27017/server-2'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+# jwt environment from kubernetees secret obj
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-2-srv
+spec:
+  selector:
+    app: server-2
+  ports:
+    - name: server-2
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
