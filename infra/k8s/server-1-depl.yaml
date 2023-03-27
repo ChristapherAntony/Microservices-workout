@@ -26,7 +26,7 @@ spec:
 # jwt environment from kubernetees secret obj
 ---
 apiVersion: v1
-kind: Service
+kind: Service    
 metadata:
   name: server-1-srv
 spec:
