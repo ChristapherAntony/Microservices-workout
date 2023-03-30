@@ -4,7 +4,7 @@ const app=express()
 
 app.get('/server-2',(req,res)=>{
     res.send(`server 2 
-   
+    new edirt
     
     `)
 
