@@ -5,7 +5,8 @@ const app=express()
 app.get('/server-2',(req,res)=>{
     res.send(`server 2 
     first edit from server 2
-    second edit from server 2`)
+    second edit from server 2
+    server 3-edit 2`)
 })
 
 
